@@ -17,7 +17,7 @@ const projects = [
   {
     title: "Portfolio Website",
     description:
-      "Created my own Software Engineering portfolio website using React and Tailwind CSS, showcasing my skills, projects, and experience in a visually appealing and user-friendly manner.",
+      "Created my own Software Engineering portfolio website with an AI chat assistant, using React and Tailwind CSS and API function, showcasing my skills, projects, and experience in a visually appealing and user-friendly manner.",
     tags: ["React", "Tailwind", "JavaScript", "UI/UX"],
     github: "https://github.com/g-vohra/GarvVohraPortfolio",
   },
