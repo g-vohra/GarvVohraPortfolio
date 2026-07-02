@@ -7,96 +7,115 @@
 
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
+
   --color-card: hsl(var(--card));
-  --color-card-foreground: hsl(var(--card-foreground));
-  --color-accent: hsl(var(--accent));
 
-  /* Tech-focused animations */
-  --animate-fade-in-up: fade-in-up 0.5s ease-out forwards;
-  --animate-blink: blink 1s step-end infinite;
-  --animate-slide-in: slide-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
-  
-  /* Ambient & Structural Animations (Dark Mode Only) */
-  --animate-typewriter: typewriter 2s steps(40, end) forwards;
-  --animate-float-subtle: float-subtle 4s ease-in-out infinite;
-  --animate-pan-grid: pan-grid 20s linear infinite;
-  --animate-scanline: scanline 8s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-subtle: float-subtle 6s ease-in-out infinite;
+  --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
+  --animate-fade-in: fade-in 0.7s ease-out forwards;
+  --animate-fade-in-delay-1: fade-in 0.7s ease-out 0.2s forwards;
+  --animate-fade-in-delay-2: fade-in 0.7s ease-out 0.4s forwards;
+  --animate-fade-in-delay-3: fade-in 0.7s ease-out 0.6s forwards;
+  --animate-fade-in-delay-4: fade-in 0.7s ease-out 0.8s forwards;
+  --animate-meteor: meteor 5s linear infinite;
+  --animate-fade-in-up: fade-in-up 1.5s ease-out infinite;
+
+  @keyframes float {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  20% {
+    transform: translate3d(8px, -8px, 0) rotate(1deg);
+  }
+
+  40% {
+    transform: translate3d(-6px, -18px, 0) rotate(-1deg);
+  }
+
+  60% {
+    transform: translate3d(6px, -10px, 0) rotate(1deg);
+  }
+
+  80% {
+    transform: translate3d(-4px, -6px, 0) rotate(-1deg);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
 }
-
-/* Base UI Animations */
-@keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-@keyframes slide-in {
-  from { transform: translateX(-20px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 5px hsl(var(--primary) / 0.2); }
-  50% { box-shadow: 0 0 15px hsl(var(--primary) / 0.5); }
-}
-
-/* Dev-Themed Animations */
-@keyframes typewriter {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes float-subtle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
-@keyframes pan-grid {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 50px 50px; }
-}
-
-@keyframes scanline {
-  0% { transform: translateY(-100%); opacity: 0; }
-  10% { opacity: 0.1; }
-  90% { opacity: 0.1; }
-  100% { transform: translateY(100vh); opacity: 0; }
+  @keyframes pulse-subtle {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes meteor {
+    0% {
+      transform: rotate(215deg) translateX(0);
+      opacity: 1;
+    }
+    70% {
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(215deg) translateX(-500px);
+      opacity: 0;
+    }
+  }
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: rotate(-10deg) translateY(10px);
+    }
+    30% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: rotate(-10deg) translateY(-10px);
+    }
+  }
 }
 
 @layer base {
   :root {
-    /* Minimalist Light Mode - Pure Blank White & Slate Blue */
-    --background: 0 0% 100%; /* Pure White */
-    --foreground: 222 47% 11%; 
-    
-    --card: 0 0% 100%; 
-    --card-foreground: 222 47% 11%;
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
 
-    --primary: 221 83% 53%; 
-    --primary-foreground: 0 0% 100%;
+    --card: 0 0% 100%;
 
-    --accent: 214 32% 91%; 
+    --primary: 142 47% 45%;
+    --primary-foreground: 210 40% 98%;
+
     --border: 214 32% 91%;
   }
 
   .dark {
-    /* Sleek Developer Dark Mode - Zinc & Emerald */
-    --background: 240 10% 4%; 
-    --foreground: 0 0% 98%; 
-    
-    --card: 240 5% 8%; 
-    --card-foreground: 0 0% 98%;
+    --background: 222 47% 4%;
+    --foreground: 213 31% 91%;
 
-    --primary: 160 84% 39%; 
-    --primary-foreground: 240 10% 4%;
+    --card: 222 47% 8%;
 
-    --accent: 240 4% 16%; 
-    --border: 240 4% 16%;
+    --primary: 142 60% 55%;
+    --primary-foreground: 213 31% 91%;
+
+    --border: 217 33% 20%;
   }
 
   * {
@@ -108,8 +127,7 @@
   }
 
   body {
-    @apply bg-background text-foreground transition-colors duration-200;
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    @apply bg-background text-foreground transition-colors duration-300;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
@@ -118,72 +136,58 @@
   margin-inline: auto;
   padding-inline: 2rem;
 
-  @media (width >= 640px) { max-width: 640px; }
-  @media (width >= 768px) { max-width: 768px; }
-  @media (width >= 1024px) { max-width: 1024px; }
-  @media (width >= 1280px) { max-width: 1280px; }
-  @media (width >= 1400px) { max-width: 1400px; }
-}
-
-/* --- Ambient Background --- */
-@utility bg-dev-grid {
-  background-size: 50px 50px;
-  background-image: 
-    linear-gradient(to right, hsl(var(--foreground) / 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, hsl(var(--foreground) / 0.05) 1px, transparent 1px);
-  @apply animate-pan-grid;
-}
-
-/* --- Typography & Text FX --- */
-@utility font-mono {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-}
-
-@utility typewriter-text {
-  @apply overflow-hidden whitespace-nowrap border-r-2 border-primary animate-typewriter inline-block;
-}
-
-/* --- Components --- */
-@utility terminal-window {
-  @apply relative rounded-lg border border-border bg-card shadow-lg overflow-hidden;
-}
-
-@utility terminal-scanline {
-  @apply absolute inset-0 pointer-events-none;
-  background: linear-gradient(to bottom, transparent, hsl(var(--primary) / 0.2), transparent);
-  height: 20px;
-  @apply animate-scanline;
-}
-
-@utility terminal-header {
-  @apply bg-accent/50 px-4 py-2 flex items-center gap-2 border-b border-border relative z-10;
-}
-
-@utility tech-pill {
-  @apply px-3 py-1 rounded-md bg-accent/30 text-xs font-mono text-foreground border border-border 
-         transition-all duration-300 hover:border-primary hover:text-primary hover:-translate-y-1 hover:shadow-md cursor-default;
-}
-
-@utility dev-button {
-  @apply px-5 py-2 rounded-md bg-primary text-primary-foreground font-medium 
-         transition-all duration-200 hover:opacity-90 active:scale-95 flex items-center justify-center gap-2;
-}
-
-@utility link-hover {
-  @apply relative text-foreground hover:text-primary transition-colors;
-  
-  &::after {
-    content: '';
-    @apply absolute left-0 -bottom-1 w-0 h-[2px] bg-primary transition-all duration-300;
+  @media (width >= 640px) {
+    max-width: 640px;
   }
-  
-  &:hover::after {
-    @apply w-full;
+  @media (width >= 768px) {
+    max-width: 768px;
   }
+  @media (width >= 1024px) {
+    max-width: 1024px;
+  }
+  @media (width >= 1280px) {
+    max-width: 1280px;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+
+@utility text-glow {
+  @apply relative;
+  text-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+}
+
+@utility card-hover {
+  @apply transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg;
+}
+
+@utility gradient-border {
+  @apply relative rounded-md;
+  background: linear-gradient(to right, hsl(var(--card)), hsl(var(--card)));
+  background-clip: padding-box;
+  border: 1px solid transparent;
+}
+
+@utility cosmic-button {
+  @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium 
+         transition-all duration-300 hover:shadow-[0_0_10px_rgba(34,197,94,0.5)]
+         hover:scale-105 active:scale-95;
+}
+
+@utility star {
+  @apply absolute rounded-full bg-white;
+  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
+}
+
+@utility meteor {
+  @apply absolute bg-linear-to-r from-white via-white to-transparent rounded-full;
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
 }
 
 #root {
   max-width: 100%;
   margin: 0 auto;
   padding: 0;
+  text-align: center;
 }
