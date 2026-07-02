@@ -23,28 +23,30 @@ suggest contacting Garv directly.
 `;
 
   try {
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GOOGLE_AI_API_KEY}`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          contents: [
-            { role: "user", parts: [{ text: `${ABOUT_ME}\n\nQuestion: ${question}` }] },
-          ],
-          generationConfig: { maxOutputTokens: 300, temperature: 0.4 },
-        }),
-      }
-    );
+    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: "llama-3.3-70b-versatile",
+        messages: [
+          { role: "system", content: ABOUT_ME },
+          { role: "user", content: question },
+        ],
+        max_tokens: 300,
+        temperature: 0.4,
+      }),
+    });
 
     const data = await response.json();
 
-    // TEMPORARY DEBUG: return the raw data so we can see what's wrong
-    if (!data?.candidates?.[0]?.content?.parts?.[0]?.text) {
+    if (!data?.choices?.[0]?.message?.content) {
       return res.status(200).json({ debug: data, httpStatus: response.status });
     }
 
-    const answer = data.candidates[0].content.parts[0].text;
+    const answer = data.choices[0].message.content;
     res.status(200).json({ answer });
   } catch (err) {
     res.status(500).json({ error: "Something went wrong", details: err.message });
