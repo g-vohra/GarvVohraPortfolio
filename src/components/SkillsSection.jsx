@@ -5,7 +5,7 @@ const skills = [
   // Languages
   { name: "Python", category: "languages" },
   { name: "Java", category: "languages" },
-  { name: "JavaScript/TypeScript", category: "languages" },
+  { name: "JavaScript", category: "languages" },
   { name: "C#", category: "languages" },
   { name: "SQL", category: "languages" },
 
