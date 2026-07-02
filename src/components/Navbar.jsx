@@ -7,7 +7,6 @@ const navItems = [
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
 ];
 
 export const Navbar = () => {
@@ -22,6 +21,7 @@ export const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   return (
     <nav
       className={cn(
@@ -51,6 +51,16 @@ export const Navbar = () => {
               {item.name}
             </a>
           ))}
+
+          
+          <a
+            href="https://www.linkedin.com/in/garv-vohra"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-foreground/80 hover:text-primary transition-colors duration-300"
+          >
+            LinkedIn
+          </a>
         </div>
 
         {/* mobile nav */}
